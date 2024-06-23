@@ -3,7 +3,7 @@ from database import db, Receipt, app
 
 @app.route('/')
 def index():
-    return redirect(url_for('receipt_list'))
+    return render_template('home.html')
 
 # Route to list all receipts
 @app.route('/receipts')

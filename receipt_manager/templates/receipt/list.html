@@ -2,28 +2,36 @@
 <html>
 <head>
     <title>Receipt List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Receipt List</h1>
-    <a href="{{ url_for('receipt_create') }}">Create a new receipt</a>
-    <table border="1">
-        <tr>
-            <th>Date</th>
-            <th>Company</th>
-            <th>Price</th>
-            <th>Actions</th>
-        </tr>
-        {% for receipt in receipts %}
-        <tr>
-            <td>{{ receipt.date }}</td>
-            <td>{{ receipt.company }}</td>
-            <td>{{ receipt.price }}</td>
-            <td>
-                <a href="{{ url_for('receipt_detail', id=receipt.id) }}">View</a>
-                <a href="{{ url_for('receipt_delete', id=receipt.id) }}">Delete</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="container">
+        <h1 class="mt-5">Receipt List</h1>
+        <a class="btn btn-primary mb-3" href="{{ url_for('receipt_create') }}">Create a new receipt</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Company</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for receipt in receipts %}
+                <tr>
+                    <td>{{ receipt.date }}</td>
+                    <td>{{ receipt.company }}</td>
+                    <td>{{ receipt.price }}</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{{ url_for('receipt_detail', id=receipt.id) }}">View</a>
+                        <a class="btn btn-danger btn-sm" href="{{ url_for('receipt_delete', id=receipt.id) }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

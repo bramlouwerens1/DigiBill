@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt Detail</title>
+</head>
+<body>
+    <h1>Receipt Detail</h1>
+    <p>Date: {{ receipt.date }}</p>
+    <p>Company: {{ receipt.company }}</p>
+    <p>Price: {{ receipt.price }}</p>
+    <a href="{{ url_for('receipt_list') }}">Back to list</a>
+</body>
+</html>

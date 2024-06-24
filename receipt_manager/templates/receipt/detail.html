@@ -10,6 +10,12 @@
         <p><strong>Date:</strong> {{ receipt.date }}</p>
         <p><strong>Company:</strong> {{ receipt.company }}</p>
         <p><strong>Price:</strong> {{ receipt.price }}</p>
+        <h3>Products</h3>
+        <ul>
+            {% for product in products %}
+            <li>{{ product.name }} (Quantity: {{ product.quantity }})</li>
+            {% endfor %}
+        </ul>
         <a class="btn btn-primary" href="{{ url_for('receipt_list') }}">Back to list</a>
         <a class="btn btn-secondary" href="{{ url_for('index') }}">Back to Home</a>
     </div>

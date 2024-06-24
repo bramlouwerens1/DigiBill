@@ -5,9 +5,10 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-5">Receipt List</h1>
+    <div class="container mt-5">
+        <h1 class="mb-4">Receipt List</h1>
         <a class="btn btn-primary mb-3" href="{{ url_for('receipt_create') }}">Create a new receipt</a>
+        <a class="btn btn-secondary mb-3" href="{{ url_for('index') }}">Back to Home</a>
         <table class="table table-bordered">
             <thead>
                 <tr>

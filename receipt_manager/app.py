@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from database import db, Receipt, app
 
+# Route to home page
 @app.route('/')
 def index():
     return render_template('home.html')

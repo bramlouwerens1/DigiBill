@@ -23,7 +23,7 @@ class Receipt(db.Model):
     date = db.Column(db.String(50))
     company = db.Column(db.String(50))
     price = db.Column(db.Float)
-    products = db.relationship('Product', backref='receipt', lazy=True)
+    products = db.relationship('Product', backref='receipt', cascade="all, delete-orphan", lazy=True)
 
 class Product(db.Model):
     """

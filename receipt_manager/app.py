@@ -23,8 +23,13 @@ def receipt_list():
     Returns:
         The rendered template with the list of receipts.
     """
-    receipts = db.session.execute(db.select(Receipt).order_by(Receipt.date)).scalars()
-    return render_template('receipt/list.html', receipts=receipts)
+    sort_order = request.args.get('sort', 'new')
+    if sort_order == 'old':
+        receipts = db.session.execute(db.select(Receipt).order_by(Receipt.date.asc())).scalars()
+    else:
+        receipts = db.session.execute(db.select(Receipt).order_by(Receipt.date.desc())).scalars()
+    return render_template('receipt/list.html', receipts=receipts, sort_order=sort_order)
+
 
 
 @app.route('/receipts/create', methods=['GET', 'POST'])

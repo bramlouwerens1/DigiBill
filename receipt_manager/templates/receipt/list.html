@@ -9,6 +9,15 @@
         <h1 class="mb-4">Receipt List</h1>
         <a class="btn btn-primary mb-3" href="{{ url_for('receipt_create') }}">Create a new receipt</a>
         <a class="btn btn-secondary mb-3" href="{{ url_for('index') }}">Back to Home</a>
+
+        <div class="mb-3">
+            <label for="sortOrder">Sort by:</label>
+            <select id="sortOrder" class="form-control" onchange="sortReceipts(this.value)">
+                <option value="new" {% if sort_order == 'new' %}selected{% endif %}>Newest to Oldest</option>
+                <option value="old" {% if sort_order == 'old' %}selected{% endif %}>Oldest to Newest</option>
+            </select>
+        </div>
+
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -33,6 +42,11 @@
             </tbody>
         </table>
     </div>
+    <script>
+        function sortReceipts(order) {
+            window.location.href = '{{ url_for("receipt_list") }}?sort=' + order;
+        }
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

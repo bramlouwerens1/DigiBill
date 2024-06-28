@@ -31,6 +31,22 @@ def receipt_list():
     return render_template('receipt/list.html', receipts=receipts, sort_order=sort_order)
 
 
+@app.route('/receipts/group_by_company')
+def group_by_company():
+    """
+    Groups receipts by company and renders the 'group_by_company.html' template.
+
+    Returns:
+        The rendered template with the grouped receipts.
+    """
+    receipts = db.session.execute(db.select(Receipt).order_by(Receipt.company)).scalars()
+    grouped_receipts = {}
+    for receipt in receipts:
+        if receipt.company not in grouped_receipts:
+            grouped_receipts[receipt.company] = []
+        grouped_receipts[receipt.company].append(receipt)
+    return render_template('receipt/group_by_company.html', grouped_receipts=grouped_receipts)
+
 
 @app.route('/receipts/create', methods=['GET', 'POST'])
 def receipt_create():
